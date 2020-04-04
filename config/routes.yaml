@@ -1,3 +1,35 @@
 index:
     path: /
     controller: App\Controller\DefaultController::index
+
+currency:
+    path: /currency/
+    controller: App\Controller\CurrencyController::list
+
+currencyAdd:
+    path: /currency/add/
+    controller: App\Controller\CurrencyController::form
+
+prices:
+    path: /prices/
+    controller: App\Controller\PricesController::index
+
+pricesByCurId:
+    path: /prices/{curId}
+    controller: App\Controller\PricesController::index
+
+pricesParser:
+    path: /prices/parser/{curId}
+    controller: App\Controller\PricesController::parser
+
+freeFloat:
+    path: /freeFloat/
+    controller: App\Controller\FreeFloatController::list
+
+freeFloatAdd:
+    path: /freeFloat/add/
+    controller: App\Controller\FreeFloatController::add
+
+indexes:
+    path: /indexes/
+    controller: App\Controller\IndexesController::index

@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\BitcoinRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PricesRepository")
  */
-class Bitcoin
+class Prices
 {
     /**
      * @ORM\Id()
@@ -15,6 +15,11 @@ class Bitcoin
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cur_id;
 
     /**
      * @ORM\Column(type="date")
@@ -46,9 +51,26 @@ class Bitcoin
      */
     private $volume;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $market_cap;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCurId(): ?int
+    {
+        return $this->cur_id;
+    }
+
+    public function setCurId(int $cur_id): self
+    {
+        $this->cur_id = $cur_id;
+
+        return $this;
     }
 
     public function getDate(): ?\DateTimeInterface
@@ -122,4 +144,17 @@ class Bitcoin
 
         return $this;
     }
+
+    public function getMarketCap(): ?float
+    {
+        return $this->market_cap;
+    }
+
+    public function setMarketCap(float $market_cap): self
+    {
+        $this->market_cap = $market_cap;
+
+        return $this;
+    }
+
 }

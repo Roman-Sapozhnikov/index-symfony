@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+
+    <form name="addCurrency" method="post">
+        <div class="form-group" style='margin-top:20px;'>
+
+            <label for="nameCur">Название валюты:</label>
+            <input id="nameCur" type="text" name="name" class="form-control" placeholder="Bitcoin"><br>
+
+            <label for="codeCur">Код валюты:</label>
+            <input id="codeCur" type="text" name="code" class="form-control" placeholder="BTC"><br>
+
+            <label for="codeCur">Путь в CoinMarketCap валюты:</label>
+            <input id="codeCur" type="text" name="pathCmc" class="form-control" placeholder="bitcoin"><br>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+
+    <div class="row" style='margin:20px 0;'>
+        <a href="/currency/">Список валют</a>
+    </div>
+
+</div>
+
+{% endblock %}
