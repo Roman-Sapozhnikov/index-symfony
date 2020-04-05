@@ -11,8 +11,9 @@
                     <div class="form-group col-md-12">
                         <label for="currency">Валюта:</label>
                         <select name="cur_id" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
+                            {% for cur in currency %}
+                                    <option {% if cur.id == request.cur_id %}selected{% endif %} value="{{ cur.id }}">{{ cur.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -21,10 +22,10 @@
                     <div class="form-group col-md-6">
                         <label for="year">Год:</label>
                         <select id="year" name="year" class="form-control">
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option selected value="2020">2020</option>
+                            <option {% if request.year == 2017 %}selected{% endif %} value="2017">2017</option>
+                            <option {% if request.year == 2018 %}selected{% endif %} value="2018">2018</option>
+                            <option {% if request.year == 2019 %}selected{% endif %} value="2019">2019</option>
+                            <option {% if request.year == 2020 %}selected{% endif %} value="2020">2020</option>
                             <option value="2021">2021</option>
                         </select>
                     </div>
@@ -61,7 +62,7 @@
 
 
         <div class="row" style='margin:20px 0;'>
-            <a href="/freeFloat/">Значения FreaFloat</a>
+            <a href="/freeFloat/">Значения Free Float</a>
         </div>
 
     </div>

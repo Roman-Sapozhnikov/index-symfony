@@ -77,12 +77,12 @@ class FreeFloat
         return $this;
     }
 
-    public function getValue(): ?float
+    public function getValue()
     {
         return $this->value;
     }
 
-    public function setValue(float $value): self
+    public function setValue($value): self
     {
         $this->value = $value;
 

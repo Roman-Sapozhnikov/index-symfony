@@ -219,7 +219,7 @@ class PricesController extends AbstractController
     }
 
     public function formatNumber($number){
-        $number = str_replace(",", "", $number);
+        $number = str_replace(",", ".", $number);
         return $number;
     }
 

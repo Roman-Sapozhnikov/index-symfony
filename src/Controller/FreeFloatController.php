@@ -35,14 +35,30 @@ class FreeFloatController extends AbstractController
 
         }
 
-        return $this->render('/freeFloat/add.html.twig', [
+        $arCur = $this->getAllCurrency();
 
+        return $this->render('/freeFloat/add.html.twig', [
+            "currency" => $arCur,
+            "request" => $_REQUEST
         ]);
     }
 
     public function list()
     {
-        $allFf = $this->getAllFreeFloat();
+
+        if(!empty($_REQUEST["setFilter"])){
+            $filter = $_REQUEST;
+            if(!$filter["cur_id"]){
+                $filter["cur_id"] = 0;
+            }
+            $allFf = $this->getAllFreeFloat($filter);
+        }else{
+            $filter = Array(
+                "cur_id" => 0,
+                "year" => date("Y")
+            );
+            $allFf = $this->getAllFreeFloat();
+        }
 
         $arCur = $this->getAllCurrency();
 
@@ -51,7 +67,9 @@ class FreeFloatController extends AbstractController
         }
 
         return $this->render('/freeFloat/list.html.twig', [
-            "freeFloats" => $allFf
+            "freeFloats" => $allFf,
+            "currency" => $arCur,
+            "filter" => $filter
         ]);
     }
 
@@ -64,7 +82,7 @@ class FreeFloatController extends AbstractController
         $ffItem->setCurId($arFields["cur_id"]);
         $ffItem->setQuarter($arFields["quarter"]);
         $ffItem->setYear($arFields["year"]);
-        $ffItem->setValue($arFields["value"]);
+        $ffItem->setValue(formatNumber($arFields["value"]));
 
         $entityManager->persist($ffItem);
 
@@ -90,17 +108,36 @@ class FreeFloatController extends AbstractController
             $arCurrency[$arCur["id"]] = $arCur;
         }
 
+        unset($arCurrency[0]);
+
         return $arCurrency;
 
     }
 
-    public function getAllFreeFloat(){
+    public function getAllFreeFloat($filter = Array()){
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
 
         $repository = $this->getDoctrine()->getRepository(FreeFloat::class);
 
-        $obj = $repository->findAll();
+        if(empty($filter["cur_id"])){
+            unset($filter["cur_id"]);
+        }
+
+        if(empty($filter["year"])){
+            unset($filter["year"]);
+        }
+
+        if(empty($filter["quarter"])){
+            unset($filter["quarter"]);
+        }
+
+        if(!empty($filter)){
+            unset($filter["setFilter"]);
+            $obj = $repository->findBy($filter, Array("id" => "desc"));
+        }else{
+            $obj = $repository->findAll();
+        }
 
         $serializer = new Serializer($normalizers, $encoders);
 
