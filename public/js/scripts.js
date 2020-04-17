@@ -39,8 +39,6 @@ $(".datepicker").datepicker({
     minDate: new Date("2017-07-02")
 });
 
-
-
 function ajaxUpdate(object) {
 
     var dataAjax = {};
@@ -66,7 +64,11 @@ function ajaxUpdate(object) {
                 type:'GET',
                 url:'/'+entity+'/edit/'+parseInt(dataAjax["update"]["id"]),
                 success:function (data) {
+                    $(".ui-widget-overlay").hide();
                     location.href = '/'+entity+'/';
+                },
+                beforeSend(){
+                    $(".ui-widget-overlay").show();
                 },
                 data:dataAjax
             });
@@ -74,6 +76,22 @@ function ajaxUpdate(object) {
             object.removeClass("showInputs");
         }
 
-
     }
 }
+
+
+$( function() {
+    var progressbar = $( "#progressbar" ),
+        progressLabel = $( ".progress-label" );
+
+    progressbar.progressbar({
+        value: false,
+        change: function() {
+            progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+        },
+        complete: function() {
+            progressLabel.text( "Complete!" );
+        }
+    });
+
+} );

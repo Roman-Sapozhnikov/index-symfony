@@ -51,3 +51,11 @@
     opacity:1;
     cursor:pointer;
 }
+
+.ui-widget-overlay {
+    display: none;
+}
+
+.ui-progressbar {
+    height: 48px!important;
+}
