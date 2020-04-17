@@ -1,0 +1,53 @@
+.container .top-menu {
+    width:100%;
+    text-align: right;
+    margin-right:0;
+    padding-bottom: 15px;
+}
+
+.container table .first-col {
+    font-weight: bold;
+}
+
+.container table .input-group input, .container table .input-group select {
+    height:30px!important;
+}
+
+.container table .input-group select {
+    padding-left: 10px;
+    padding-top: 1px;
+}
+
+.container table .input-group .is-invalid {
+    border:1px solid #dc3545;
+}
+
+.container table .input-group {
+    display: none;
+}
+
+.container table tr td {
+    height:55px;
+}
+
+.container table tr.showInputs .text-group {
+    display: none;
+}
+
+.container table tr.showInputs .input-group {
+    display: block;
+}
+
+.container table td.edit {
+    padding-top:15px;
+    padding-left:15px;
+}
+
+.container table td.edit .text-group svg {
+    opacity:0.3;
+}
+
+.container table td.edit:hover svg {
+    opacity:1;
+    cursor:pointer;
+}

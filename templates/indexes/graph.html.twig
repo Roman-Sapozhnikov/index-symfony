@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block breadcrumb %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active"><a href="/indexes/">Индексы</a></li>
+            <li class="breadcrumb-item active">График</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% for intervalItem in intervals %}
+            <a class="btn btn-{{ intervalItem.codeKey }}" href="/indexes/graph/?interval={{ intervalItem.code }}" role="button">{{ intervalItem.value }}</a>
+        {% endfor %}
+
+        <a style="float: right" class="btn btn-secondary" href="/indexes/graph/compare/" role="button">Сравнение</a>
+
+        <figure class="highcharts-figure">
+            <div id="graph"></div>
+        </figure>
+    </div>
+
+<script>
+    var indexes = {{ indexes }};
+    var dates = {{ dates }};
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+{% block stylesheets %}
+    <link href="/css/graph.css" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/themes/dark-unica.js"></script>
+    <script src="/js/graph.js"></script>
+{% endblock %}

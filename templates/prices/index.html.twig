@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block breadcrumb %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active">Цены</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+
+        <form name="filterFreeFloat" method="post">
+            <input type="hidden" name="setFilter" value="Y">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="currency">Фильтр:</label>
+                    <select name="cur_id" class="form-control">
+                        <option value="0">Выберите валюту</option>
+                        {% for cur in currencies %}
+                            <option {% if cur.id == filter.cur_id %}selected{% endif %} value="{{ cur.id }}">{{ cur.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="year">Дата начала:</label>
+                    <input class="form-control datepicker" type="text" name="dateFrom" value="{{ filter.dateFrom }}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="year">Дата окончания:</label>
+                    <input class="form-control datepicker" type="text" name="dateTo" value="{{ filter.dateTo }}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary">Применить</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <h2>{{ currency }}</h2>
+
+        <table class="table table-striped table-bordered table-hover pb-100">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Date</th>
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Close</th>
+                <th>Change, %</th>
+                <th>Volume</th>
+                <th>MarketCap</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for priceItem in prices %}
+                <tr>
+                    <th scope="row">{{ priceItem.date.timestamp|date("d.m.Y") }}</th>
+                    <td>{{ priceItem.open }}</td>
+                    <td>{{ priceItem.high }}</td>
+                    <td>{{ priceItem.low }}</td>
+                    <td>{{ priceItem.close }}</td>
+                    <td>{{ priceItem.prc }}</td>
+                    <td>{{ priceItem.volume }}</td>
+                    <td>{{ priceItem.market_cap }}</td>
+                <tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

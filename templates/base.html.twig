@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/styles.css">
+
+        {% block stylesheets %}{% endblock %}
+
+
+    </head>
+    <body>
+
+        {% block breadcrumb %}{% endblock %}
+
+        {% block body %}{% endblock %}
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/jquery-ui-git.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="/js/scripts.js" crossorigin="anonymous"></script>
+
+        {% block scripts %}{% endblock %}
+
+        {% if block('javascripts') %}<script>{% endif %}
+
+        {% block javascripts %}{% endblock %}{% if block('javascripts') %}</script>{% endif %}
+
+
+    </body>
+</html>

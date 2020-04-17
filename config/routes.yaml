@@ -1,0 +1,67 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+currency:
+    path: /currency/
+    controller: App\Controller\CurrencyController::list
+
+currencyAdd:
+    path: /currency/add/
+    controller: App\Controller\CurrencyController::form
+
+currencyEdit:
+    path: /currency/edit/{curId}
+    controller: App\Controller\CurrencyController::edit
+
+prices:
+    path: /prices/
+    controller: App\Controller\PricesController::index
+
+pricesByCurId:
+    path: /prices/{curId}
+    controller: App\Controller\PricesController::index
+
+pricesParser:
+    path: /prices/parser/{curId}
+    controller: App\Controller\PricesController::parser
+
+freeFloat:
+    path: /freeFloat/
+    controller: App\Controller\FreeFloatController::list
+
+freeFloatAdd:
+    path: /freeFloat/add/
+    controller: App\Controller\FreeFloatController::add
+
+freeFloatEdit:
+    path: /freeFloat/edit/{id}
+    controller: App\Controller\FreeFloatController::edit
+
+divider:
+    path: /divider/
+    controller: App\Controller\DividerController::list
+
+dividerAdd:
+    path: /divider/add/
+    controller: App\Controller\DividerController::add
+
+dividerEdit:
+    path: /divider/edit/{id}
+    controller: App\Controller\DividerController::edit
+
+indexes:
+    path: /indexes/
+    controller: App\Controller\IndexesController::index
+
+graph:
+    path: /indexes/graph/
+    controller: App\Controller\IndexesController::graph
+
+graphCompare:
+    path: /indexes/graph/compare/
+    controller: App\Controller\IndexesController::compare
+
+saveIndex:
+    path: /indexes/saveIndex/
+    controller: App\Controller\IndexesController::saveIndex

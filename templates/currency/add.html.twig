@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block breadcrumb %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/currency/">Список Валют</a></li>
+            <li class="breadcrumb-item active">Добавление Валюты</li>
+        </ol>
+    </nav>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <form name="addCurrency" method="post">
+        <div class="form-group" style='margin-top:20px;'>
+
+            <label for="nameCur">Название валюты:</label>
+            <input id="nameCur" type="text" name="name" class="form-control" placeholder="Bitcoin"><br>
+
+            <label for="codeCur">Код валюты:</label>
+            <input id="codeCur" type="text" name="code" class="form-control" placeholder="BTC"><br>
+
+            <label for="pathCmc">Путь в CoinMarketCap валюты:</label>
+            <input id="pathCmc" type="text" name="pathCmc" class="form-control" placeholder="bitcoin"><br>
+
+        </div>
+
+        <button disabled type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    $("input:text").keyup(function(){
+
+        if($("#nameCur").val() && $("#codeCur").val() && $("#pathCmc").val()){
+            $("button:submit").removeAttr("disabled");
+        }else{
+            $("button:submit").attr("disabled", "disabled");
+        }
+
+    });
+
+{% endblock %}
