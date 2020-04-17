@@ -169,7 +169,7 @@ class IndexesController extends AbstractController
         $indexes = "[".implode(", ", $arIndexes)."]";
 
         return $this->render('/indexes/graph.html.twig', [
-            "title" => "График",
+            "title" => "Основной график",
             "dates" => $dates,
             "indexes" => $indexes,
             "intervals" => $arIntervals,
@@ -378,7 +378,7 @@ class IndexesController extends AbstractController
 
 
         return $this->render('/indexes/compare.html.twig', [
-            "title" => "График",
+            "title" => "График сравнения",
             "indexes" => $indexesPrc,
             "dates" => $dates,
             "prcBtc" => $prcBtc,

@@ -74,6 +74,7 @@ class PricesController extends AbstractController
             "prices" => $arPrices,
             "currency" => $arCur["name"],
             "currencies" => $arAllCur,
+            "title" => "Цены",
             "filter" => $filter
         ]);
     }

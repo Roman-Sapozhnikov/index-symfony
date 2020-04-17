@@ -45,7 +45,8 @@ class FreeFloatController extends AbstractController
 
         return $this->render('/freeFloat/add.html.twig', [
             "currency" => $arCur,
-            "request" => $_REQUEST
+            "request" => $_REQUEST,
+            "title" => "Добавление FreeFloat"
         ]);
     }
 
@@ -75,7 +76,8 @@ class FreeFloatController extends AbstractController
         return $this->render('/freeFloat/list.html.twig', [
             "freeFloats" => $allFf,
             "currency" => $arCur,
-            "filter" => $filter
+            "filter" => $filter,
+            "title" => "Список FreeFloat"
         ]);
     }
 

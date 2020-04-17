@@ -19,7 +19,8 @@ class DividerController extends AbstractController
         $allDivider = $this->getAllDivider();
 
         return $this->render('/divider/list.html.twig', [
-            "dividers" => $allDivider
+            "dividers" => $allDivider,
+            "title" => "Список Divider"
         ]);
     }
 
@@ -39,7 +40,8 @@ class DividerController extends AbstractController
         }
 
         return $this->render('/divider/add.html.twig', [
-            "request" => $_REQUEST
+            "request" => $_REQUEST,
+            "title" => "Добавление Divider"
         ]);
     }
 

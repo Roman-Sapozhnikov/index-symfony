@@ -31,7 +31,7 @@ class CurrencyController extends AbstractController
         }
 
         return $this->render('/currency/add.html.twig', [
-
+            "title" => "Добавление валюты"
         ]);
     }
 
@@ -40,7 +40,8 @@ class CurrencyController extends AbstractController
         $allCur = $this->getAllCurrency();
 
         return $this->render('/currency/list.html.twig', [
-            "currencies" => $allCur
+            "currencies" => $allCur,
+            "title" => "Список валют"
         ]);
     }
 

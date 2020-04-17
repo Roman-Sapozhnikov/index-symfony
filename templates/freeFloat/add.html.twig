@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ title }}{% endblock %}
+
 {% block breadcrumb %}
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Главная</a></li>
             <li class="breadcrumb-item"><a href="/freeFloat/">Список FreeFloat</a></li>
-            <li class="breadcrumb-item active">Добавление FreeFloat</li>
+            <li class="breadcrumb-item active">{{ title }}</li>
         </ol>
     </nav>
 
